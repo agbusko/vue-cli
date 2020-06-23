@@ -1,5 +1,7 @@
 <template>
 	<div id="survey">
+		{{checkQuestions}}
+		<!--test-->
 		<h1>ОПРОС</h1>
 		
 		<el-radio-group v-model="radio">
@@ -8,10 +10,8 @@
 			<el-radio :label="9">Option C</el-radio>
 		</el-radio-group>
 		
-		<el-checkbox-group v-model="checkList">
-			<el-checkbox label="Option A"></el-checkbox>
-			<el-checkbox label="Option B"></el-checkbox>
-			<el-checkbox label="Option C"></el-checkbox>
+		<el-checkbox-group v-model="checkQuestions">
+			<el-checkbox v-for="(value, index) in questions" :key="index" :label="value"></el-checkbox>
 		</el-checkbox-group>
 	</div>
 </template>
@@ -21,8 +21,9 @@
 
         data () {
             return {
-                radio: 6,
-                checkList: ['Option A','Option B']
+                radio: '',
+                checkQuestions: [],
+								questions: [ 'ask1', 'ask2', 'ask3', 'ask4' ]
             }
         }
     }
