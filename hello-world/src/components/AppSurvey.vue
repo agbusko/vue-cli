@@ -1,29 +1,38 @@
 <template>
-	<div id="survey">
-		{{checkQuestions}}
-		<!--test-->
+	<div id="survey">{{objCheckbox.checkAnswers}}{{objRadio.checkAnswers}}
 		<h1>ОПРОС</h1>
+		<app-checkbox
+			v-bind:answers="objCheckbox.answers"
+			v-on:change-answer="objCheckbox.checkAnswers=$event"
+		></app-checkbox>
 		
-		<el-radio-group v-model="radio">
-			<el-radio :label="3">Option A</el-radio>
-			<el-radio :label="6">Option B</el-radio>
-			<el-radio :label="9">Option C</el-radio>
-		</el-radio-group>
-		
-		<el-checkbox-group v-model="checkQuestions">
-			<el-checkbox v-for="(value, index) in questions" :key="index" :label="value"></el-checkbox>
-		</el-checkbox-group>
+		<app-radio
+			v-bind:answers="objRadio.answers"
+			v-on:change-answer="objRadio.checkAnswers=$event">
+		</app-radio>
 	</div>
 </template>
 <script>
+    import AppCheckbox from './controls/Checkbox'
+    import AppRadio from './controls/Radio'
+    
     export default {
         name: "AppSurvey",
+        components: {
+            AppCheckbox,
+            AppRadio
+        },
 
         data () {
             return {
-                radio: '',
-                checkQuestions: [],
-								questions: [ 'ask1', 'ask2', 'ask3', 'ask4' ]
+                objCheckbox: {
+                    checkAnswers: [],
+                    answers: [ 'ask1', 'ask2', 'ask3', 'ask4' ]
+                },
+                objRadio: {
+                    checkAnswers: '',
+                    answers: [ 'ask1', 'ask2', 'ask3', 'ask4' ]
+                }
             }
         }
     }
@@ -33,5 +42,3 @@
 		color: cadetblue;
 	}
 </style>
-
-
