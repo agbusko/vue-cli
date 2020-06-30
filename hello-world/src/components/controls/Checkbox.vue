@@ -1,7 +1,8 @@
 <template>
 	<div id="checkbox">
+		<h1>{{quizzes.question}}</h1>
 		<el-checkbox-group v-model="checkAnswers">
-			<el-checkbox v-for="(value, index) in answers"
+			<el-checkbox v-for="(value, index) in quizzes.answers"
 					:key="index"
 					:label="value"
 					:change="$emit('change-answer', checkAnswers)">
@@ -12,16 +13,19 @@
 <script>
     export default {
         name: "Checkbox",
-			props: {
-				answers: Array
-			},
+				props: {
+            quizzes: Object
+				},
 
         data () {
             return {
-                checkAnswers: [],
+								checkAnswers: []
             }
         }
     }
 </script>
 <style scoped>
+	h1 {
+		color: cadetblue;
+	}
 </style>

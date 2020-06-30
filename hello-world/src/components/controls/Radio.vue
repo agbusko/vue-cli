@@ -1,7 +1,8 @@
 <template>
 	<div id="radio">
+		<h1>{{quizzes.question}}</h1>
 		<el-radio-group v-model="checkAnswers">
-			<el-radio v-for="(value, index) in answers"
+			<el-radio v-for="(value, index) in quizzes.answers"
                 :key="index"
                 :label="value"
                 :change="$emit('change-answer', checkAnswers)">
@@ -12,9 +13,9 @@
 <script>
     export default {
         name: "Radio",
-			props: {
-				answers: null
-			},
+				props: {
+            quizzes: Object
+				},
 
         data () {
             return {
@@ -24,4 +25,7 @@
     }
 </script>
 <style scoped>
+	h1 {
+		color: cadetblue;
+	}
 </style>

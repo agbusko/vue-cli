@@ -1,17 +1,26 @@
 <template>
-	<div id="survey">{{objCheckbox.checkAnswers}}{{objRadio.checkAnswers}}
+	<div id="survey">
 		<h1>ОПРОС</h1>
-		<app-checkbox
-			v-bind:answers="objCheckbox.answers"
-			v-on:change-answer="objCheckbox.checkAnswers=$event"
-		>
-		</app-checkbox>
-		<app-radio
-			v-bind:answers="objRadio.answers"
-			v-on:change-answer="objRadio.checkAnswers=$event">
-		</app-radio>
-
-		<el-button type="primary" plain>NEXT</el-button>
+		<section v-for="(item, index) in quizzes" :key="index">
+			<app-checkbox
+				v-bind:quizzes="item"
+				v-on:change-answer="item.checkAnswers=$event">
+			</app-checkbox>
+			
+			<app-radio
+				v-bind:quizzes="item"
+				v-on:change-answer="item.checkAnswers=$event">
+			</app-radio>
+		</section>
+		
+		<el-button-group>
+			<el-button type="primary" icon="el-icon-arrow-left">BACK</el-button>
+			
+			<el-button type="primary">NEXT<i class="el-icon-arrow-right el-icon-right"></i>
+			</el-button>
+			
+			<el-button type="primary">SEND</el-button>
+		</el-button-group>
 	</div>
 </template>
 <script>
@@ -27,20 +36,25 @@
 
         data () {
             return {
-                objCheckbox: {
-                    checkAnswers: '',
-                    answers: [ 'ask1', 'ask2', 'ask3', 'ask4' ]
+                quizzes: [ {
+                    question: 'question_01?',
+                    answers: [ 'ask1', 'ask2', 'ask3', 'ask4' ],
+                    checkAnswers: ''
                 },
-                objRadio: {
-                    checkAnswers: '',
-                    answers: [ 'ask1', 'ask2', 'ask3', 'ask4' ]
-                }
+                  {
+                    question: 'question_02?',
+                    answers: [ 'ask1', 'ask2', 'ask3', 'ask4' ],
+                    checkAnswers: ''
+                }]
             }
         }
     }
 </script>
 <style scoped>
 	h1 {
-		color: cadetblue;
+		color: dodgerblue;
+	}
+	#survey {
+		background-color: lightgray;
 	}
 </style>
