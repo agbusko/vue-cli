@@ -4,12 +4,14 @@
 		<app-checkbox
 			v-bind:answers="objCheckbox.answers"
 			v-on:change-answer="objCheckbox.checkAnswers=$event"
-		></app-checkbox>
-		
+		>
+		</app-checkbox>
 		<app-radio
 			v-bind:answers="objRadio.answers"
 			v-on:change-answer="objRadio.checkAnswers=$event">
 		</app-radio>
+
+		<el-button type="primary" plain>NEXT</el-button>
 	</div>
 </template>
 <script>
@@ -26,7 +28,7 @@
         data () {
             return {
                 objCheckbox: {
-                    checkAnswers: [],
+                    checkAnswers: '',
                     answers: [ 'ask1', 'ask2', 'ask3', 'ask4' ]
                 },
                 objRadio: {

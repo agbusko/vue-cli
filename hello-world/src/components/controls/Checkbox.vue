@@ -12,9 +12,9 @@
 <script>
     export default {
         name: "Checkbox",
-				props: {
-            answers: Array
-        },
+			props: {
+				answers: Array
+			},
 
         data () {
             return {

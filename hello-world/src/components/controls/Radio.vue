@@ -12,9 +12,9 @@
 <script>
     export default {
         name: "Radio",
-        props: {
-            answers: null
-        },
+			props: {
+				answers: null
+			},
 
         data () {
             return {
