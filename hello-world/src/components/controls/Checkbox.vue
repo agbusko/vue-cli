@@ -1,9 +1,9 @@
 <template>
-	<div id="checkbox">
+	<div id="checkbox">{{checkAnswers}}child
 		<h1>{{quizzes.question}}</h1>
 		<el-checkbox-group v-model="checkAnswers">
-			<el-checkbox v-for="(value, index) in quizzes.answers"
-					:key="index"
+			<el-checkbox v-for="value in quizzes.answers"
+					:key="value.id"
 					:label="value"
 					:change="$emit('change-answer', checkAnswers)">
 			</el-checkbox>
@@ -19,7 +19,7 @@
 
         data () {
             return {
-								checkAnswers: []
+								checkAnswers: ''
             }
         }
     }
@@ -29,3 +29,5 @@
 		color: cadetblue;
 	}
 </style>
+
+<!---->
