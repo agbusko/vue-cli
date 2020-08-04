@@ -12,7 +12,7 @@
 </template>
 <script>
     export default {
-        name: "Radio",
+        name: "RadioGroup",
 				props: {
             quizzes: Object
 				},

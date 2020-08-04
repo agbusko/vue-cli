@@ -12,7 +12,7 @@
 </template>
 <script>
     export default {
-        name: "Checkbox",
+        name: "CheckboxGroup",
 				props: {
             quizzes: Object
 				},
