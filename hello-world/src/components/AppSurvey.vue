@@ -1,24 +1,12 @@
 <template>
 	<div id="survey">
-		<!-- ------------------------------------------- -->
-		{{ questionIndex }}<br>
-		{{ quizzes[0].checkAnswers }}<br>
-		{{ quizzes[1].checkAnswers }}<br>
+		<app-checkbox
+			v-bind:quizzes="quizzes"
+			v-bind:questionIndex="questionIndex"
+		></app-checkbox>
 		
-		<!-- ------------------------------------------- -->
+		<div>------------------------------</div>  <div>{{ quizzes[0].checkAnswers}}</div> {{questionIndex}}
 		<h1>{{ title }}</h1>
-		
-		<section class="survey-card" v-for="(item, index) in quizzes" :key="index">
-			<el-checkbox-group v-model="item.checkAnswers" v-if="index == questionIndex">
-				<el-checkbox
-					v-for="(value, index) in item.answers"
-					:key="index"
-					:label="value">
-				</el-checkbox>
-			</el-checkbox-group>
-		</section>
-
-		
 		<el-button-group>
 			<el-button type="primary" @click="prev" icon="el-icon-arrow-left" :disabled="questionIndex == 0">
 				BACK
@@ -36,13 +24,13 @@
 	</div>
 </template>
 <script>
-    //  import AppCheckbox from './controls/Checkbox'
+    import AppCheckbox from './controls/CheckboxGroup'
     //  import AppRadio from './controls/Radio'
     
     export default {
         name: "AppSurvey",
         components: {
-            // AppCheckbox,
+            AppCheckbox,
             // AppRadio
         },
 
