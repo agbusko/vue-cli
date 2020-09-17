@@ -5,7 +5,12 @@
 			v-bind:questionIndex="questionIndex"
 		></app-checkbox>
 		
-		<div>------------------------------</div>  <div>{{ quizzes[0].checkAnswers}}</div> {{questionIndex}}
+		<app-radio
+			v-bind:quizzes="quizzes"
+			v-bind:questionIndex="questionIndex"
+		></app-radio>
+		
+		<div>------------------------------</div>
 		<h1>{{ title }}</h1>
 		<el-button-group>
 			<el-button type="primary" @click="prev" icon="el-icon-arrow-left" :disabled="questionIndex == 0">
@@ -25,13 +30,13 @@
 </template>
 <script>
     import AppCheckbox from './controls/CheckboxGroup'
-    //  import AppRadio from './controls/Radio'
+    import AppRadio from './controls/RadioGroup'
     
     export default {
         name: "AppSurvey",
         components: {
             AppCheckbox,
-            // AppRadio
+            AppRadio
         },
 
         data () {
@@ -43,19 +48,19 @@
                         id: 1,
                         question: 'question_01?',
                         answers: [ 'ask1', 'ask2', 'ask3', 'ask4' ],
-                        checkAnswers: []
+                        checkAnswers: [] // в зависимости от комопнента Array or String
                     },
                     {
                         id: 2,
                         question: 'question_02?',
                         answers: [ 'ask5', 'ask6', 'ask7', 'ask8' ],
-                        checkAnswers: []
+                        checkAnswers: [] // в зависимости от комопнента Array or String
                     },
                     {
                         id: 3,
                         question: 'question_02?',
                         answers: [ 'ask9', 'ask10', 'ask11', 'ask12' ],
-                        checkAnswers: []
+                        checkAnswers: [] // в зависимости от комопнента Array or String
                     }
                 ]
             }
